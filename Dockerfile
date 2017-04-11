@@ -26,10 +26,9 @@ RUN apt-get update \
 		python-yaml \
 		python3 \
 		python3-setuptools \
-		python3-pip \
 		python3-ply \
 		python3-yaml \
-		libpython3.5-dev \
+		python3-crypto \
 		repo \
 		ca-certificates \
 		sudo \
@@ -62,7 +61,5 @@ RUN useradd -c $DEV_USER_NAME \
 		$DEV_USER
 
 # Initialize development environment for $DEV_USER.
-RUN sudo -u $DEV_USER -H pip3 install --user wheel \
-	&& sudo -u $DEV_USER -H pip3 install --user pycrypto \
-	&& sudo -u $DEV_USER -H git config --global credential.helper cache \
+RUN sudo -u $DEV_USER -H git config --global credential.helper cache \
 	&& sudo -u $DEV_USER -H git config --global credential.helper 'cache --timeout=3600'
