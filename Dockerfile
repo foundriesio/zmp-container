@@ -38,7 +38,7 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/*
 
 # Install the Zephyr SDK.
-RUN apt-get clean && apt-get update && apt-get install --no-install-recommends -y \
+RUN apt-get update && apt-get install --no-install-recommends -y \
 	file \
 	wget \
 	xz-utils \
