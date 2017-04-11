@@ -61,5 +61,4 @@ RUN useradd -c $DEV_USER_NAME \
 		$DEV_USER
 
 # Initialize development environment for $DEV_USER.
-RUN sudo -u $DEV_USER -H git config --global credential.helper cache \
-	&& sudo -u $DEV_USER -H git config --global credential.helper 'cache --timeout=3600'
+RUN sudo -u $DEV_USER -H git config --global credential.helper 'cache --timeout=3600'
