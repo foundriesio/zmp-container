@@ -20,6 +20,7 @@ RUN apt-get update \
 		gcc-multilib \
 		g++ \
 		g++-multilib \
+		less \
 		libc6-dev-i386 \
 		bzip2 \
 		libncurses5-dev \
