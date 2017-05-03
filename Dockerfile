@@ -50,7 +50,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 		xz-utils \
 	&& apt-get autoremove -y \
 	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/* /tmp/zephyr-sdk-0.9.setup.run
+	&& rm -rf /var/lib/apt/lists/* /tmp/zephyr-sdk-0.9-setup.run
 
 # Create the user which will run the SDK binaries.
 RUN useradd -c $DEV_USER_NAME \
