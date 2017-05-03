@@ -27,6 +27,7 @@ RUN apt-get update \
 		python-yaml \
 		python3 \
 		python3-setuptools \
+		python3-sphinx \
 		python3-ply \
 		python3-yaml \
 		python3-crypto \
