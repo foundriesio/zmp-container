@@ -27,6 +27,7 @@ RUN apt-get update \
 		python-yaml \
 		python3 \
 		python3-setuptools \
+		python3-sphinx \
 		python3-ply \
 		python3-yaml \
 		python3-crypto \
@@ -50,7 +51,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 		xz-utils \
 	&& apt-get autoremove -y \
 	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/* /tmp/zephyr-sdk-0.9.setup.run
+	&& rm -rf /var/lib/apt/lists/* /tmp/zephyr-sdk-0.9-setup.run
 
 # Create the user which will run the SDK binaries.
 RUN useradd -c $DEV_USER_NAME \
