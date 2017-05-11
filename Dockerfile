@@ -24,7 +24,6 @@ RUN apt-get update \
 		libc6-dev-i386 \
 		bzip2 \
 		libncurses5-dev \
-		python-yaml \
 		python3 \
 		python3-setuptools \
 		python3-sphinx \
