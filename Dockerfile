@@ -33,7 +33,6 @@ RUN apt-get update \
 		repo \
 		ca-certificates \
 		sudo \
-		wget \
 	&& apt-get autoremove -y \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
@@ -50,12 +49,14 @@ RUN apt-get update \
 RUN apt-get update && apt-get install --no-install-recommends -y \
 	file \
 	xz-utils \
+	wget \
 	&& wget -q -O /tmp/zephyr-sdk-0.9-setup.run https://nexus.zephyrproject.org/content/repositories/releases/org/zephyrproject/zephyr-sdk/0.9/zephyr-sdk-0.9-setup.run \
 	&& chmod +x /tmp/zephyr-sdk-0.9-setup.run \
 	&& /tmp/zephyr-sdk-0.9-setup.run --quiet -- -d $ZEPHYR_SDK_INSTALL_DIR -y \
 	&& apt-get purge -y --auto-remove \
 		file \
 		xz-utils \
+		wget \
 	&& apt-get autoremove -y \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/zephyr-sdk-0.9-setup.run
