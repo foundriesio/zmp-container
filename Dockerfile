@@ -8,31 +8,14 @@ ARG DEV_USER=genesis-dev
 ENV ZEPHYR_GCC_VARIANT=zephyr
 ENV ZEPHYR_SDK_INSTALL_DIR=/opt/zephyr-sdk-v0.9
 
-# Packages needed or useful for Genesis development. We keep these around.
-#
-# Zephyr packages from
-# https://www.zephyrproject.org/doc/getting_started/installation_linux.html
+# Packages needed or useful for Genesis development.
+# We manage these in a PPA, and keep them installed.
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
-		git \
-		make \
-		gcc \
-		gcc-multilib \
-		g++ \
-		g++-multilib \
-		less \
-		libc6-dev-i386 \
-		bzip2 \
-		libncurses5-dev \
-		python3 \
-		python3-setuptools \
-		python3-sphinx \
-		python3-ply \
-		python3-yaml \
-		python3-crypto \
-		repo \
-		ca-certificates \
-		sudo \
+	   software-properties-common \
+	&& add-apt-repository ppa:linaro-maintainers/ltd \
+	&& apt-get update \
+	&& apt-get install -y --no-install-recommends genesis-dev \
 	&& apt-get autoremove -y \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
