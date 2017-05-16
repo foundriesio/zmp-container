@@ -8,32 +8,14 @@ ARG DEV_USER=genesis-dev
 ENV ZEPHYR_GCC_VARIANT=zephyr
 ENV ZEPHYR_SDK_INSTALL_DIR=/opt/zephyr-sdk-v0.9
 
-# Packages needed or useful for Genesis development. We keep these around.
-#
-# Zephyr packages from
-# https://www.zephyrproject.org/doc/getting_started/installation_linux.html
+# Packages needed or useful for Genesis development.
+# We manage these in a PPA, and keep them installed.
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
-		git \
-		make \
-		gcc \
-		gcc-multilib \
-		g++ \
-		g++-multilib \
-		less \
-		libc6-dev-i386 \
-		bzip2 \
-		libncurses5-dev \
-		python3 \
-		python3-setuptools \
-		python3-sphinx \
-		python3-ply \
-		python3-yaml \
-		python3-crypto \
-		repo \
-		ca-certificates \
-		sudo \
-		wget \
+	   software-properties-common \
+	&& add-apt-repository ppa:linaro-maintainers/ltd \
+	&& apt-get update \
+	&& apt-get install -y --no-install-recommends genesis-dev \
 	&& apt-get autoremove -y \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
@@ -50,12 +32,14 @@ RUN apt-get update \
 RUN apt-get update && apt-get install --no-install-recommends -y \
 	file \
 	xz-utils \
+	wget \
 	&& wget -q -O /tmp/zephyr-sdk-0.9-setup.run https://nexus.zephyrproject.org/content/repositories/releases/org/zephyrproject/zephyr-sdk/0.9/zephyr-sdk-0.9-setup.run \
 	&& chmod +x /tmp/zephyr-sdk-0.9-setup.run \
 	&& /tmp/zephyr-sdk-0.9-setup.run --quiet -- -d $ZEPHYR_SDK_INSTALL_DIR -y \
 	&& apt-get purge -y --auto-remove \
 		file \
 		xz-utils \
+		wget \
 	&& apt-get autoremove -y \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/zephyr-sdk-0.9-setup.run
