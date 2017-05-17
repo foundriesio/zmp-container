@@ -20,14 +20,6 @@ RUN apt-get update \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
-# Add CI dependencies
-RUN apt-get update \
-	&& apt-get install -y --no-install-recommends \
-		python3-requests \
-	&& apt-get autoremove -y \
-	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/*
-
 # Install the Zephyr SDK.
 RUN apt-get update && apt-get install --no-install-recommends -y \
 	file \
@@ -43,6 +35,15 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 	&& apt-get autoremove -y \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/zephyr-sdk-0.9-setup.run
+
+# Add CI dependencies
+RUN apt-get update \
+	&& apt-get install -y --no-install-recommends \
+		python3-requests \
+		wget \
+	&& apt-get autoremove -y \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/*
 
 # Create the user which will run the SDK binaries.
 RUN useradd -c $DEV_USER_NAME \
