@@ -40,7 +40,14 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
 		python3-requests \
+		qemu-system-arm \
 		wget \
+	&& wget -O /tmp/install-rust.sh https://sh.rustup.rs \
+	&& chmod +x /tmp/install-rust.sh \
+	&& apt-get install -y --no-install-recommends curl \
+	&& /tmp/install-rust.sh -y \
+	&& apt-get purge -y --auto-remove curl \
+	&& rm /tmp/install-rust.sh \
 	&& apt-get autoremove -y \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
