@@ -25,9 +25,9 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 	file \
 	xz-utils \
 	wget \
-	&& wget -q -O /tmp/zephyr-sdk-0.9-setup.run https://nexus.zephyrproject.org/content/repositories/releases/org/zephyrproject/zephyr-sdk/0.9/zephyr-sdk-0.9-setup.run \
-	&& chmod +x /tmp/zephyr-sdk-0.9-setup.run \
-	&& /tmp/zephyr-sdk-0.9-setup.run --quiet -- -d $ZEPHYR_SDK_INSTALL_DIR -y \
+	&& wget -q -O /tmp/zephyr-sdk-setup.run https://github.com/zephyrproject-rtos/meta-zephyr-sdk/releases/download/0.9.1/zephyr-sdk-0.9.1-setup.run \
+	&& chmod +x /tmp/zephyr-sdk-setup.run \
+	&& /tmp/zephyr-sdk-setup.run --quiet -- -d $ZEPHYR_SDK_INSTALL_DIR -y \
 	&& apt-get purge -y --auto-remove \
 		file \
 		xz-utils \
