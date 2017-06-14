@@ -4,6 +4,7 @@ MAINTAINER Marti Bolivar <marti.bolivar@linaro.org>
 ARG DEBIAN_FRONTEND=noninteractive
 ARG DEV_USER_NAME=Genesis
 ARG DEV_USER=genesis-dev
+ARG DEV_USER_PASSWD=genesis
 
 ENV ZEPHYR_GCC_VARIANT=zephyr
 ENV ZEPHYR_SDK_INSTALL_DIR=/opt/zephyr-sdk-v0.9
@@ -59,6 +60,9 @@ RUN useradd -c $DEV_USER_NAME \
 		-m \
 		-s /bin/bash \
 		$DEV_USER
+
+# Add default password for the SDK user (useful with sudo)
+RUN echo $DEV_USER:$DEV_USER_PASSWD | chpasswd
 
 # Initialize development environment for $DEV_USER.
 RUN sudo -u $DEV_USER -H git config --global credential.helper 'cache --timeout=3600'
