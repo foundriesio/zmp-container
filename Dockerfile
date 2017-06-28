@@ -47,6 +47,7 @@ RUN apt-get update \
 	&& chmod +x /tmp/install-rust.sh \
 	&& apt-get install -y --no-install-recommends curl \
 	&& /tmp/install-rust.sh -y \
+	&& easy_install3 pykwalify \
 	&& apt-get purge -y --auto-remove curl \
 	&& rm /tmp/install-rust.sh \
 	&& apt-get autoremove -y \
