@@ -1,5 +1,4 @@
 FROM ubuntu:16.04
-MAINTAINER Marti Bolivar <marti.bolivar@linaro.org>
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG DEV_USER_NAME=Genesis
