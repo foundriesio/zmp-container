@@ -9,7 +9,10 @@ ENV ZEPHYR_GCC_VARIANT=zephyr
 ENV ZEPHYR_SDK_INSTALL_DIR=/opt/zephyr-sdk-v0.9
 
 # Packages needed or useful for Genesis development.
-# We manage these in a PPA, and keep them installed.
+#
+# We manage most these in a PPA, and keep them installed. Some Python
+# dependencies needed for non-CI development that can't be satisfied
+# with Ubuntu 16.04 packages are installed via pip; see below.
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
 	   software-properties-common \
@@ -20,7 +23,7 @@ RUN apt-get update \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
-# Install the Zephyr SDK.
+# Install the Zephyr SDK and Zephyr's Python dependencies.
 RUN apt-get update && apt-get install --no-install-recommends -y \
 	file \
 	xz-utils \
@@ -34,7 +37,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 		wget \
 	&& apt-get autoremove -y \
 	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/* /tmp/zephyr-sdk-0.9-setup.run
+	&& rm -rf /var/lib/apt/lists/* /tmp/zephyr-sdk-0.9-setup.run \
+	&& pip3 install --system pyelftools
 
 # Add CI dependencies
 RUN apt-get update \
