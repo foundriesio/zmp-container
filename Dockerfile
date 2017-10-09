@@ -13,9 +13,9 @@ ARG DEV_USER_PASSWD=genesis
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
 	   software-properties-common \
-	&& add-apt-repository ppa:linaro-maintainers/ltd \
+	&& add-apt-repository ppa:osf-maintainers/ppa \
 	&& apt-get update \
-	&& apt-get install -y --no-install-recommends genesis-dev \
+	&& apt-get install -y --no-install-recommends zmp-dev \
 	&& apt-get autoremove -y \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* \
