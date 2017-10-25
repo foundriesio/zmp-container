@@ -1,11 +1,11 @@
 FROM ubuntu:16.04
 
 ARG DEBIAN_FRONTEND=noninteractive
-ARG DEV_USER_NAME=Genesis
-ARG DEV_USER=genesis-dev
-ARG DEV_USER_PASSWD=genesis
+ARG DEV_USER_NAME=Zephyr-microPlatform
+ARG DEV_USER=zmp-dev
+ARG DEV_USER_PASSWD=zmp
 
-# Packages needed or useful for Genesis development.
+# Packages needed or useful for Zephyr microPlatform development.
 #
 # We manage most these in a PPA, and keep them installed. Some Python
 # dependencies can't be satisfied with Ubuntu 16.04 packages, and are

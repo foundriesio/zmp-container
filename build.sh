@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t genesis-sdk .
+docker build -t zmp-sdk .
