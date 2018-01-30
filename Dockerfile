@@ -19,7 +19,8 @@ RUN apt-get update \
 	&& apt-get autoremove -y \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* \
-	&& pip3 install --system --no-binary :all: pyelftools
+	&& pip3 install --system --no-binary :all: pyelftools \
+	&& pip3 install --system cryptography
 
 # Add CI dependencies
 RUN apt-get update \
