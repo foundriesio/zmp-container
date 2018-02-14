@@ -20,7 +20,7 @@ RUN apt-get update \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& pip3 install --system --no-binary :all: pyelftools \
-	&& pip3 install --system cryptography
+	&& pip3 install --system cryptography intelhex
 
 # Add CI dependencies
 RUN apt-get update \
