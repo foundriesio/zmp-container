@@ -42,6 +42,17 @@ RUN apt-get update \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
+# Zephyr files are encoded in UTF-8. We don't want the default POSIX
+# locale, because that breaks Zephyr tooling like sanitycheck.
+RUN apt-get update \
+	&& apt-get install -y --no-install-recommends locales \
+	&& locale-gen en_US.UTF-8 \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/*
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US:en
+ENV LC_ALL=en_US.UTF-8
+
 # Create the user which will run the SDK binaries.
 RUN useradd -c $DEV_USER_NAME \
 		-d /home/$DEV_USER \
