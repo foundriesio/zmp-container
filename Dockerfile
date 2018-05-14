@@ -10,6 +10,9 @@ ARG DEV_USER_PASSWD=zmp
 # We manage most these in a PPA, and keep them installed. Some Python
 # dependencies can't be satisfied with Ubuntu 16.04 packages, and are
 # installed via pip3.
+#
+# Refer here for details on the hash -r:
+# https://github.com/pypa/pip/issues/5221#issuecomment-382069604
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
 	   software-properties-common \
@@ -20,6 +23,7 @@ RUN apt-get update \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& pip3 install --upgrade pip \
+	&& hash -r \
 	&& pip3 install wheel \
 	&& pip3 install pyelftools cryptography intelhex pyserial
 
