@@ -21,7 +21,7 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& pip3 install --upgrade pip \
 	&& pip3 install wheel \
-	&& pip3 install pyelftools cryptography intelhex
+	&& pip3 install pyelftools cryptography intelhex pyserial
 
 # Add CI dependencies
 RUN apt-get update \
