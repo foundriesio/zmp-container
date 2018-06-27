@@ -36,6 +36,7 @@ RUN apt-get update \
 		qemu-system-arm \
 		socat \
 		wget \
+	&& pip3 install sphinxcontrib-contentui \
 	&& wget -O /tmp/install-rust.sh https://sh.rustup.rs \
 	&& chmod +x /tmp/install-rust.sh \
 	&& apt-get install -y --no-install-recommends curl \
