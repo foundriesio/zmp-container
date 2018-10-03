@@ -25,7 +25,7 @@ RUN apt-get update \
 	&& pip3 install --upgrade pip \
 	&& hash -r \
 	&& pip3 install wheel \
-	&& pip3 install pyelftools cryptography intelhex pyserial click
+	&& pip3 install pyelftools cryptography intelhex pyserial click colorama
 
 # Add CI dependencies
 RUN apt-get update \
