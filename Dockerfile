@@ -16,7 +16,7 @@ ARG DEV_USER_PASSWD=zmp
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
 	   software-properties-common \
-	&& add-apt-repository ppa:osf-maintainers/ppa \
+	&& add-apt-repository ppa:fio-maintainers/ppa \
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends zmp-dev \
 	&& apt-get autoremove -y \
