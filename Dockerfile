@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG DEV_USER_NAME=Zephyr-microPlatform
@@ -41,7 +41,7 @@ RUN apt-get update \
 	&& chmod +x /tmp/install-rust.sh \
 	&& apt-get install -y --no-install-recommends curl \
 	&& /tmp/install-rust.sh -y \
-	&& easy_install3 pykwalify \
+	&& pip3 install pykwalify \
 	&& apt-get purge -y --auto-remove curl \
 	&& rm /tmp/install-rust.sh \
 	&& apt-get autoremove -y \
