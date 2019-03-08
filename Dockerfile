@@ -25,6 +25,7 @@ RUN apt-get update \
 	&& pip3 install --upgrade pip \
 	&& hash -r \
 	&& pip3 install wheel \
+	&& pip3 install west \
 	&& pip3 install pyelftools cryptography intelhex pyserial click colorama
 
 # Add CI dependencies
