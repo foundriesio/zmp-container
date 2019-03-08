@@ -40,11 +40,7 @@ RUN apt-get update \
 # Add CI dependencies
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
-		iproute2 \
-		net-tools \
 		python3-requests \
-		qemu-system-arm \
-		socat \
 	&& pip3 install sphinxcontrib-contentui \
 	&& wget -O /tmp/install-rust.sh https://sh.rustup.rs \
 	&& chmod +x /tmp/install-rust.sh \
