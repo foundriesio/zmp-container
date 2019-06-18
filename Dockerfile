@@ -22,7 +22,7 @@ RUN apt-get update \
 	   software-properties-common \
 	&& add-apt-repository ppa:fio-maintainers/ppa \
 	&& apt-get update \
-	&& apt-get install -y --no-install-recommends zmp-dev wget autotools-dev autoconf \
+	&& apt-get install -y --no-install-recommends zmp-dev wget autotools-dev automake \
 	&& apt-get autoremove -y \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* \
